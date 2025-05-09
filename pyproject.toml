@@ -1,0 +1,19 @@
+    [tool.poetry]
+    name = "python_exercism"
+    version = "0.1.0"
+    description = "basic template"
+    authors = ["matthewh <mholman000@gmail.com>"]
+
+    [tool.poetry.dependencies]
+    python = ">=3.9"
+    [tool.poetry.group.dev.dependencies]
+    flake8 = "^7.2.0"
+    black = "^25.1.0"
+    isort = "^6.0.1"
+    pre-commit = "^4.2.0"
+
+    [tool.black]
+    line-length = 120
+
+    [tool.isort]
+    profile = "black"
