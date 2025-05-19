@@ -5,8 +5,6 @@ Python numbers documentation: https://docs.python.org/3/library/stdtypes.html#nu
 Overview of exchanging currency when travelling: https://www.compareremit.com/money-transfer-tips/guide-to-exchanging-currency-for-overseas-travel/
 """
 
-from wsgiref.simple_server import demo_app
-
 
 def exchange_money(budget: float, exchange_rate: float) -> float:
     """
