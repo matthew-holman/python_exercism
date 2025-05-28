@@ -63,12 +63,12 @@ def reactor_efficiency(voltage: float, current: float, theoretical_max_power: fl
 
     if actual_reactor_efficiency >= 80:
         return Efficiency.GREEN.value
-    elif actual_reactor_efficiency >= 60:
+    if actual_reactor_efficiency >= 60:
         return Efficiency.ORANGE.value
-    elif actual_reactor_efficiency >= 30:
+    if actual_reactor_efficiency >= 30:
         return Efficiency.RED.value
-    else:
-        return Efficiency.BLACK.value
+
+    return Efficiency.BLACK.value
 
 
 def fail_safe(temperature: float, neutrons_produced_per_second: float, threshold: float) -> str:
@@ -87,7 +87,7 @@ def fail_safe(temperature: float, neutrons_produced_per_second: float, threshold
 
     if core_stuff < (threshold * 0.9):
         return RiskLevel.LOW.value
-    elif (threshold * 0.9) < core_stuff < (threshold * 1.1):
+    if (threshold * 0.9) < core_stuff < (threshold * 1.1):
         return RiskLevel.NORMAL.value
-    else:
-        return RiskLevel.DANGER.value
+
+    return RiskLevel.DANGER.value
