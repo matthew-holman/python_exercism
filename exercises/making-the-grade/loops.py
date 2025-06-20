@@ -47,7 +47,8 @@ def letter_grades(highest: int) -> List[int]:
             86 <= "A" <= 100
     """
     boundary_interval = round((highest - 40) / 4)
-    return [boundary for boundary in range(41, highest, boundary_interval)]
+    # return [boundary for boundary in range(41, highest, boundary_interval)]
+    return list(range(41, highest, boundary_interval))
 
 
 def student_ranking(student_scores: List[int], student_names: List[int]):
@@ -58,11 +59,9 @@ def student_ranking(student_scores: List[int], student_names: List[int]):
     :return: list - of strings in format ["<rank>. <student name>: <score>"].
     """
 
-    complete_scores: List[str] = []
-    for pointer in range(0, len(student_scores)):
-        complete_scores.append(f"{pointer + 1}. {student_names[pointer]}: {student_scores[pointer]}")
-
-    return complete_scores
+    return [
+        f"{pointer + 1}. {name}: {score}" for pointer, (name, score) in enumerate(zip(student_names, student_scores))
+    ]
 
 
 def perfect_score(student_info: List[List[str]]) -> List[str]:
