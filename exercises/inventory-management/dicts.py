@@ -1,6 +1,6 @@
 """Functions to keep track and alter inventory."""
 
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 
 def create_inventory(items: List[str]) -> Dict:
@@ -59,7 +59,7 @@ def remove_item(inventory: Dict, item: str) -> Dict:
     return inventory
 
 
-def list_inventory(inventory: Dict):
+def list_inventory(inventory: Dict) -> List[tuple]:
     """Create a list containing only available (item_name, item_count > 0) pairs in inventory.
 
     :param inventory: dict - an inventory dictionary.
