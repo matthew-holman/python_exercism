@@ -1,6 +1,5 @@
 """Solution to Ellen's Alien Game exercise."""
 
-from pickle import TUPLE
 from typing import List, Tuple
 
 
