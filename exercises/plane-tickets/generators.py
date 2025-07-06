@@ -6,7 +6,7 @@ from string import ascii_lowercase
 from typing import Dict, List
 
 
-def generate_seat_letters(number: int) -> Generator[str]:
+def generate_seat_letters(number: int) -> Generator[str, None, None]:
     """Generate a series of letters for airline seats.
 
     :param number: int - total number of seat letters to be generated.
@@ -18,15 +18,10 @@ def generate_seat_letters(number: int) -> Generator[str]:
     Example: A, B, C, D
 
     """
-    counter = 0
-    seat_letter = 0
+    seat_letters = ["A", "B", "C", "D"]
 
-    while counter < number:
-        yield ascii_lowercase[seat_letter].upper()
-        counter += 1
-        seat_letter += 1
-        if seat_letter > 3:
-            seat_letter = 0
+    for counter in range(number):
+        yield seat_letters[counter % len(seat_letters)]
 
 
 def generate_seats(number: int) -> Generator[str]:
@@ -52,7 +47,7 @@ def generate_seats(number: int) -> Generator[str]:
             row = math.ceil(counter / 4)
             if row >= 13:
                 row += 1
-            yield str(row) + letter
+            yield f"{row}{letter}"
             counter += 1
 
 
@@ -70,7 +65,7 @@ def assign_seats(passengers: List[str]) -> Dict[str, str]:
     return dict(seat_list)
 
 
-def generate_codes(seat_numbers: List[str], flight_id: str):
+def generate_codes(seat_numbers: List[str], flight_id: str) -> Generator[str, None, None]:
     """Generate codes for a ticket.
 
     :param seat_numbers: list[str] - list of seat numbers.
@@ -80,6 +75,4 @@ def generate_codes(seat_numbers: List[str], flight_id: str):
     """
 
     for seat_number in seat_numbers:
-        ticket_code = seat_number + flight_id
-        ticket_code = ticket_code + ("0" * (12 - len(ticket_code)))
-        yield ticket_code
+        yield (seat_number + flight_id).ljust(12, "0")
